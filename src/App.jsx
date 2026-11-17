@@ -2,6 +2,9 @@ import { HashRouter, NavLink, Navigate, Route, Routes } from 'react-router-dom'
 import Inicio from './pages/Inicio'
 import MisCompaneros from './pages/MisCompaneros'
 import Registrarme from './pages/Registrarme'
+import DetalleCompanero from './pages/detallecompanero'
+import Publicaciones from './pages/publicaciones'
+import CrearPost from './pages/CrearPost'
 
 const linkNav = ({ isActive }) =>
   `rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors ${
@@ -34,6 +37,9 @@ function App() {
               <NavLink to="/registrarme" className={linkNav}>
                 Registrarme
               </NavLink>
+              <NavLink to="/posts" className={linkNav}>
+                Publicaciones
+              </NavLink>
             </div>
           </nav>
         </header>
@@ -43,7 +49,10 @@ function App() {
             <Route path="/" element={<Inicio />} />
             <Route path="/mis-companeros" element={<MisCompaneros />} />
             <Route path="/registrarme" element={<Registrarme />} />
+            <Route path="/detalle-companero/:id" element={<DetalleCompanero />} />
+            <Route path="/posts" element={<Publicaciones />} />
             <Route path="*" element={<Navigate to="/" replace />} />
+            <Route path="/crear-post" element={<CrearPost />} />
           </Routes>
         </main>
       </div>

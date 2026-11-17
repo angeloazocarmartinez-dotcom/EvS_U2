@@ -13,6 +13,18 @@ export async function obtenerUsuarios() {
   return datos.users
 }
 
+// GET /users/:id → devuelve un usuario con sus posts
+export async function obtenerUsuarioPorId(id) {
+  const respuesta = await fetch(`${API_URL}/users/${id}`)
+  const datos = await respuesta.json()
+
+  if (!respuesta.ok) {
+    throw new Error(datos.error || 'No se pudo obtener el usuario')
+  }
+
+  return datos.user
+}
+
 // POST /auth/register → crea un usuario y devuelve { user, token }
 export async function registrarUsuario(usuario) {
   const respuesta = await fetch(`${API_URL}/auth/register`, {

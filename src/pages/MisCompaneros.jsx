@@ -29,25 +29,31 @@ function TarjetaCompanero({ usuario, indice }) {
   const gradiente = AVATAR_GRADIENTS[indice % AVATAR_GRADIENTS.length]
 
   return (
-    <article className="flex flex-col items-center rounded-2xl border border-neutral-200 bg-white p-6 text-center shadow-sm transition-shadow hover:shadow-md">
-      <div className="rounded-full bg-gradient-to-tr from-amber-400 via-pink-500 to-violet-600 p-[3px]">
-        <div
-          className={`flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br ${gradiente} text-2xl font-bold text-white ring-4 ring-white`}
-        >
-          {iniciales(usuario)}
+    <Link
+      to={`/detalle-companero/${usuario.id}`}
+      className="block h-full rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-violet-600"
+      aria-label={`Ver detalle de ${usuario.name} ${usuario.lastName}`}
+    >
+      <article className="flex h-full flex-col items-center rounded-2xl border border-neutral-200 bg-white p-6 text-center shadow-sm transition-shadow hover:shadow-md">
+        <div className="rounded-full bg-gradient-to-tr from-amber-400 via-pink-500 to-violet-600 p-[3px]">
+          <div
+            className={`flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br ${gradiente} text-2xl font-bold text-white ring-4 ring-white`}
+          >
+            {iniciales(usuario)}
+          </div>
         </div>
-      </div>
-      <h2 className="mt-4 text-base font-semibold text-neutral-900">
-        {usuario.name} {usuario.lastName}
-      </h2>
-      <p className="mt-1 w-full truncate text-sm text-neutral-500">{usuario.email}</p>
-      <span className="mt-3 rounded-full bg-neutral-100 px-3 py-1 font-mono text-xs text-neutral-600">
-        {usuario.rut}
-      </span>
-      <p className="mt-4 border-t border-neutral-100 pt-3 text-xs text-neutral-400">
-        Se unió el {fechaRegistro(usuario.createdAt)}
-      </p>
-    </article>
+        <h2 className="mt-4 text-base font-semibold text-neutral-900">
+          {usuario.name} {usuario.lastName}
+        </h2>
+        <p className="mt-1 w-full truncate text-sm text-neutral-500">{usuario.email}</p>
+        <span className="mt-3 rounded-full bg-neutral-100 px-3 py-1 font-mono text-xs text-neutral-600">
+          {usuario.rut}
+        </span>
+        <p className="mt-4 border-t border-neutral-100 pt-3 text-xs text-neutral-400">
+          Se unió el {fechaRegistro(usuario.createdAt)}
+        </p>
+      </article>
+    </Link>
   )
 }
 
